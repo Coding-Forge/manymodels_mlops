@@ -1,0 +1,64 @@
+# Continuous Integration (CI) pipeline that orchestrates the training, evaluation, and registration of the diabetes_regression model.
+
+resources:
+  containers:
+  - container: mlops
+    endpoint: 'acrconnection'
+    image: 'automl/mlops/python:latest'
+
+    # image: mcr.microsoft.com/mlops/python:latest
+pr: none
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - .pipelines/
+    - automated_ml/
+    - automated_ml/fester_it.py
+    - automated_ml/common/scripts/
+    - automated_ml/automl_training_pipeline/scripts
+    - automated_ml/automl_training_pipeline/automl_training_pipeline.py
+ 
+#variables:
+#- template: diabetes_regression-variables-template.yml
+#- group: devopsforai-aml-vg
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: 'Model_CI'
+  displayName: 'Model CI'
+  jobs:
+  - job: "Model_CI_Pipeline"
+    displayName: "Model CI Pipeline"
+    container: mlops
+    timeoutInMinutes: 0
+    variables:
+      PASSWORD: $(Build.ArtifactStagingDirectory/drop)
+      #PASSWORD: $[dependencies.secret_getter.outputs['getpassword.PASSWORD'] ]
+    steps:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: 'dawp-ml-svc'
+        KeyVaultName: 'dawpmlws5167175338'
+        SecretsFilter: '*'
+        RunAsPreJob: false
+
+    #- template: code-quality-template.yml
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: 'dawp-ml-svc'
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)
+        inlineScript: |
+          set -e # fail on error
+          # export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+          # Invoke the Python building and publishing a training pipeline
+          jupyter nbconvert --to script $(pwd)/automated_ml/automl_training_pipeline/training_pipeline.ipynb
+          python $(pwd)/automated_ml/automl_training_pipeline/training_pipeline.py
+          # python $(pwd)/automated_ml/fester_it.py --password $(connectionString)
+      displayName: 'Publish Azure Machine Learning Pipeline'
+
