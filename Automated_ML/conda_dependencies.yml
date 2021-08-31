@@ -1,0 +1,20 @@
+name: training_env
+dependencies:
+  # The python interpreter version.
+  # Currently Azure ML Workbench only supports 3.5.2 and later.
+  - python=3.7.*
+  - pip
+
+  - pip:
+      # Base AzureML SDK
+      - azureml-sdk==1.33.*
+
+      # Must match AzureML SDK version.
+      # https://docs.microsoft.com/en-us/azure/machine-learning/concept-environments
+      - azureml-defaults==1.33.*
+
+      # Training deps
+      - scikit-learn
+
+      # Scoring deps
+      - inference-schema[numpy-support]
