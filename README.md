@@ -1,29 +1,5 @@
-![Many Models Solution Accelerator Banner](images/mmsa.png)
-# Many Models Solution Accelerator
-
-<!-- 
-Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
-
-Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
-
-Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
--->
-
-In the real world, many problems can be too complex to be solved by a single machine learning model. Whether that be predicting sales for each individual store, building a predictive maintanence model for hundreds of oil wells, or tailoring an experience to individual users, building a model for each instance can lead to improved results on many machine learning problems.
-
-This Pattern is very common across a wide variety of industries and applicable to many real world use cases. Below are some examples we have seen where this pattern is being used.
-
-- Energy and utility companies building predictive maintenance models for thousands of oil wells, hundreds of wind turbines or hundreds of smart meters
-
-- Retail organizations building workforce optimization models for thousands of stores, campaign promotion propensity models, Price optimization models for hundreds of thousands of products they sell
-
-- Restaurant chains building demand forecasting models across thousands of restaurants  
-
-- Banks and financial institutes building models for cash replenishment for ATM Machine and for several ATMs or building personalized models for individuals
-
-- Enterprises building revenue forecasting models at each division level
-
-- Document management companies building text analytics and legal document search models per each state
+[Many Models Solution Accellerator](https://github.com/microsoft/solution-accelerator-many-models)
+Please use the link above to download the solution. You can use the code in the current solution for providing a continuous integration and deployment of your code.
 
 Azure Machine Learning (AML) makes it easy to train, operate, and manage hundreds or even thousands of models. This repo will walk you through the end to end process of creating a many models solution from training to scoring to monitoring.
 
