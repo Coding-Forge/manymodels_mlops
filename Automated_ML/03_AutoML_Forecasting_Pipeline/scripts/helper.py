@@ -4,7 +4,7 @@
 
 import sys
 import hashlib
-from azureml.core import Workspace
+from azureml.core import Workspace, Run
 sys.path.append("..")
 
 
@@ -28,9 +28,13 @@ def build_parallel_run_config_for_forecasting(train_env, compute, nodecount, wor
 
 def get_automl_environment(workspace: Workspace, training_pipeline_run_id: str, training_experiment_name: str):
     from azureml.core import Experiment, Run
+    print("here is one")
     experiment = Experiment(workspace, training_experiment_name)
+    print("here is two")
     run = Run(experiment, training_pipeline_run_id)
+    print("here is three")
     step_run = list(run.get_children())[0]
+    print("here is four")
     return step_run.get_environment()
 
 
