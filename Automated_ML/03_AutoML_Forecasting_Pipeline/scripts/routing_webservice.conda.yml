@@ -5,3 +5,4 @@ dependencies:
   - pip:
       - azureml-defaults
       - joblib
+      - pandas
