@@ -53,6 +53,8 @@ stages:
         inlineScript: |
           set -e # fail on error
           # Invoke the Python building and publishing a training pipeline
+          export connectionString=$(connectionString)
+          export subscription_id=$(subscription_id)
           jupyter nbconvert --to script $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.ipynb
           python $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.py
       displayName: 'Publish Azure Machine Learning Pipeline'
