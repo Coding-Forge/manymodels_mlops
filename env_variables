@@ -1,5 +1,0 @@
-#!/bin/bash
-echo "Create environment variables importing into machine learning"
-echo "export WORKSPACE=coding-forge-ml-ws" >> ~/.bashrc
-echo "export RG=coding-forge-rg" >> ~/.bashrc
-echo "export SUBSCRIPTION=af3877c2-18a2-4ce2-b67c-a8e21e968128" >> ~/.bashrc
