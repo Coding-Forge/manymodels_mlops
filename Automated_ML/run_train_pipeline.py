@@ -1,7 +1,7 @@
 from azureml.pipeline.core import PublishedPipeline
 from azureml.core import Experiment, Workspace
 import argparse
-from utilities.env_variables import Env
+from utils.env_variables import Env
 
 
 def main():
