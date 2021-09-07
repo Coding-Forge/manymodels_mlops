@@ -39,7 +39,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: $(AMLCONNECTION)
+        azureSubscription: '$(AMLCONNECTION)'
         KeyVaultName: $(A_KV_NAME)
         SecretsFilter: '*'
         RunAsPreJob: false
