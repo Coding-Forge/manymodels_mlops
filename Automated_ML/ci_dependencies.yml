@@ -7,6 +7,7 @@ dependencies:
   # dependencies with versions aligned with conda_dependencies.yml.
   - conda-forge::jq
   - pip==21.2.3
+  - jupyter
 
   - pip:
       # dependencies with versions aligned with conda_dependencies.yml.
