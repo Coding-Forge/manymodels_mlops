@@ -15,7 +15,7 @@ trigger:
     - environment_setup/Dockerfile
 
 variables:
-  containerRegistry: $[coalesce(variables['acrServiceConnection'], 'acrconnection')]
+  containerRegistry: $[coalesce(variables['acrServiceConnection'], 'azurecrconnection')]
   imageName: 'automl/mlops/python'
   #imageName: $[coalesce(variables['agentImageName'], 'automl/mlops/python')]
         
