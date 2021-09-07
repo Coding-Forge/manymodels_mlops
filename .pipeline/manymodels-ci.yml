@@ -3,7 +3,7 @@
 resources:
   containers:
   - container: mlops
-    endpoint: 'acrconnection'
+    endpoint: $(AZURECRCONNECTION)
     image: 'automl/mlops/python:latest'
 
     # image: mcr.microsoft.com/mlops/python:latest
@@ -39,7 +39,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: $(azuremlconnection)
+        azureSubscription: $(AMLCONNECTION)
         KeyVaultName: $(A_KV_NAME)
         SecretsFilter: '*'
         RunAsPreJob: false
@@ -47,7 +47,7 @@ stages:
     #- template: code-quality-template.yml
     - task: AzureCLI@1
       inputs:
-        azureSubscription: $(azureSubscription)
+        azureSubscription: $(AMLCONNECTION)
         scriptLocation: inlineScript
         workingDirectory: $(Build.SourcesDirectory)
         inlineScript: |
@@ -74,7 +74,7 @@ stages:
     steps:
     - task: AzureCLI@1
       inputs:
-        azureSubscription: $(azuremlconnection)
+        azureSubscription: $(AMLCONNECTION)
         scriptLocation: inlineScript
         workingDirectory: $(Build.SourcesDirectory)
         inlineScript: |
