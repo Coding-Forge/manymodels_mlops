@@ -13,6 +13,8 @@ trigger:
   paths:
     include:
     - environment_setup/Dockerfile
+    - environment_setup/docker-image-pipeline.yml
+    - Automated_ML/ci_dependencies.yml
 
 variables:
   containerRegistry: $[coalesce(variables['acrServiceConnection'], 'azurecrconnection')]
