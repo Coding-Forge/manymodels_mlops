@@ -17,6 +17,7 @@ dependencies:
       - pandas
       - scikit-learn
       - jupyter
+      - python-dotenv
 
       # Additional pip dependencies for the CI environment.
       - pytest==5.4.*
