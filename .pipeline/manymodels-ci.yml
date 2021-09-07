@@ -39,7 +39,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: 'coding-forge-ml-ws'
+        azureSubscription: 'azuremlconnection'
         KeyVaultName: $(A_KV_NAME)
         SecretsFilter: '*'
         RunAsPreJob: false
