@@ -56,9 +56,9 @@ stages:
           export SUBSCRIPTION=$(SUBSCRIPTION_ID)
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
-          jupyter nbconvert --to script $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.ipynb
+          jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
           ls -al $(pwd)/Automated_ML/utils
-          python $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.py
+          python ml_service/pipelines/02_AutoML_Training_Pipeline.py
       displayName: 'Publish Azure Machine Learning Pipeline'
 
 - stage: 'Getting_Pipeline_ID'
@@ -81,7 +81,7 @@ stages:
         inlineScript: |
           set -e # fail on error
           export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
-          python -m Automated_ML.run_train_pipeline --output_pipeline_id_file "pipeline_id.txt" --skip_train_execution True
+          python -m ml_service.pipelines.run_train_pipeline --output_pipeline_id_file "pipeline_id.txt" --skip_train_execution True
           # Set AMLPIPELINEID variable for next AML Pipeline task in next job
           AMLPIPELINEID="$(cat pipeline_id.txt)"
           echo "##vso[task.setvariable variable=AMLPIPELINEID;isOutput=true]$AMLPIPELINEID"
