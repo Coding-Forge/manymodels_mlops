@@ -57,7 +57,6 @@ stages:
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
-          ls -al $(pwd)/Automated_ML/utils
           python ml_service/pipelines/02_AutoML_Training_Pipeline.py
       displayName: 'Publish Azure Machine Learning Pipeline'
 
