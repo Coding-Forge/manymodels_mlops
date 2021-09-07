@@ -39,8 +39,8 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: $(azureSubscription)
-        KeyVaultName: $(KeyVaultName)
+        azureSubscription: $(azuremlconnection)
+        KeyVaultName: $(A_KV_NAME)
         SecretsFilter: '*'
         RunAsPreJob: false
 
@@ -53,8 +53,9 @@ stages:
         inlineScript: |
           set -e # fail on error
           # Invoke the Python building and publishing a training pipeline
-          export connectionString=$(connectionString)
-          export subscription_id=$(subscription_id)
+          export SUBSCRIPTION=$(SUBSCRIPTION_ID)
+          export WORKSPACE=$(WORKSPACE_NAME)
+          export RG=$(RESOURCE_GROUP)
           jupyter nbconvert --to script $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.ipynb
           python $(pwd)/Automated_ML/02_AutoML_Training_Pipeline/02_AutoML_Training_Pipeline.py
       displayName: 'Publish Azure Machine Learning Pipeline'
@@ -73,7 +74,7 @@ stages:
     steps:
     - task: AzureCLI@1
       inputs:
-        azureSubscription: $(azureSubscription)
+        azureSubscription: $(azuremlconnection)
         scriptLocation: inlineScript
         workingDirectory: $(Build.SourcesDirectory)
         inlineScript: |

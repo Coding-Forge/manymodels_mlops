@@ -38,7 +38,7 @@ stages:
     timeoutInMinutes: 0
     steps:
     - download: none
-    - template: diabetes_regression-get-model-id-artifact-template.yml
+    - template: manymodels-get-artifact-template.yml
       parameters:
         projectId: '$(resources.pipeline.model-train-ci.projectID)'
         pipelineId: '$(resources.pipeline.model-train-ci.pipelineID)'
@@ -51,7 +51,7 @@ stages:
         workingDirectory: $(Build.SourcesDirectory)
         inlineScript: 'az extension add -n azure-cli-ml'
     - task: AzureCLI@1
-      displayName: "Deploy to ACI (CLI)"
+      displayName: "Deploy to AKS"
       inputs:
         azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
         scriptLocation: inlineScript
