@@ -7,7 +7,7 @@ dependencies:
   # dependencies with versions aligned with conda_dependencies.yml.
   - conda-forge::jq
   - pip==21.2.3
-  - jupyter
+  
 
   - pip:
       # dependencies with versions aligned with conda_dependencies.yml.
@@ -16,6 +16,7 @@ dependencies:
       - azureml-contrib-automl-pipeline-steps==1.33.*
       - pandas
       - scikit-learn
+      - jupyter
 
       # Additional pip dependencies for the CI environment.
       - pytest==5.4.*
