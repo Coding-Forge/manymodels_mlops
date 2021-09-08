@@ -53,10 +53,14 @@
 import azureml.core
 from azureml.core import Workspace, Datastore
 import pandas as pd
-import sys
 import os
 
+import sys
 sys.path.append("../../")
+
+os.chdir(os.getcwd())
+print(os.getcwd())
+
 from ml_service.utils.env_variables import Env
 
 e=Env()
