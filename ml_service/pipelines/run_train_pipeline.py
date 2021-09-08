@@ -3,7 +3,6 @@ from azureml.core import Experiment, Workspace
 import argparse
 
 import sys
-sys.path.append("..")
 from utils.env_variables import Env
 
 
