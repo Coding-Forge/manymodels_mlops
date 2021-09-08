@@ -1,7 +1,10 @@
 from azureml.pipeline.core import PublishedPipeline
 from azureml.core import Experiment, Workspace
 import argparse
-from ml_service.utils.env_variables import Env
+
+import sys
+sys.path.append("..")
+from utils.env_variables import Env
 
 
 def main():
