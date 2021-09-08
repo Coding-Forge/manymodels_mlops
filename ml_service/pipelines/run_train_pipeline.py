@@ -1,10 +1,8 @@
 from azureml.pipeline.core import PublishedPipeline
 from azureml.core import Experiment, Workspace
 import argparse
-
-import sys
-sys.path.append("..")
-from utils.env_variables import Env
+import os
+from ml_service.utils.env_variables import Env
 
 
 def main():
@@ -28,7 +26,7 @@ def main():
 
     aml_workspace = Workspace.get(
         name=e.workspace_name,
-        subscription_id=e.subscription_id,
+        subscription_id=os.environ.get("SUBSCRIPTION_ID"),
         resource_group=e.resource_group
     )
 
