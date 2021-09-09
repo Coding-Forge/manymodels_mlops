@@ -61,3 +61,27 @@ stages:
           # jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
           jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
+
+- stage: 'Model_CD'
+  displayName: 'Model CD'
+  jobs:
+  - job: "Model_CD_Pipeline"
+    displayName: "Model CD Pipeline"
+    container: mlops
+    timeoutInMinutes: 0
+    steps:
+    #- template: code-quality-template.yml
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: $(AMLCONNECTION)
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)
+        inlineScript: |
+          set -e # fail on error
+          # Invoke the Python building and publishing a training pipeline
+          export SUBSCRIPTION=$(SUBSCRIPTION_ID)
+          export WORKSPACE=$(WORKSPACE_NAME)
+          export RG=$(RESOURCE_GROUP)
+          export BUILDID=$(BUILD.BUILDID)
+          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/forecasting/realtime.ipynb
+      displayName: 'Deploy models to AKS Service'
