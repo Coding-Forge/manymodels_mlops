@@ -59,33 +59,5 @@ stages:
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
           # jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
-          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
+          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
-
-- stage: 'Getting_Pipeline_ID'
-  displayName: 'Train and evaluate model'
-  condition: succeeded()
-  variables:
-    BUILD_URI: '$(SYSTEM.COLLECTIONURI)$(SYSTEM.TEAMPROJECT)/_build/results?buildId=$(BUILD.BUILDID)'
-  jobs:
-  - job: "Get_Pipeline_ID"
-    condition: and(succeeded(), eq(coalesce(variables['auto-trigger-training'], 'true'), 'true'))
-    displayName: "Get Pipeline ID for execution"
-    container: mlops
-    timeoutInMinutes: 0
-    steps:
-    - task: AzureCLI@1
-      inputs:
-        azureSubscription: $(AMLCONNECTION)
-        scriptLocation: inlineScript
-        workingDirectory: $(Build.SourcesDirectory)
-        inlineScript: |
-          set -e # fail on error
-          export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
-          python -m ml_service.pipelines.run_train_pipeline --output_pipeline_id_file "pipeline_id.txt" --skip_train_execution
-          # Set AMLPIPELINEID variable for next AML Pipeline task in next job
-          AMLPIPELINEID="$(cat pipeline_id.txt)"
-          echo "##vso[task.setvariable variable=AMLPIPELINEID;isOutput=true]$AMLPIPELINEID"
-      name: 'getpipelineid'
-      displayName: 'Get Pipeline ID'
-
