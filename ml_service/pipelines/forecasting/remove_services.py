@@ -16,7 +16,7 @@ def main():
     ws = Workspace.get(
         name=e.workspace_name,
         subscription_id=os.environ.get("SUBSCRIPTION_ID"),
-        resource_group=os.environ.get("RG"),
+        resource_group=e.resource_group,
     )
 
     for webservice in Webservice.list(ws):
