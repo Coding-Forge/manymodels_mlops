@@ -43,10 +43,10 @@ stages:
         inlineScript: |
           set -e # fail on error
           # Invoke the Python building and publishing a training pipeline
-          export SUBSCRIPTION=$(SUBSCRIPTION_ID)
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID='163'
+          export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
           # remove any services from AKS cluster and replace with new services
           jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/forecasting/realtime.ipynb
       displayName: 'Deploy models to AKS Service'
