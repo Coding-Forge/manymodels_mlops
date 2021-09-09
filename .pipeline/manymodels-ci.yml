@@ -90,7 +90,7 @@ stages:
         inlineScript: |
           set -e # fail on error
           # Invoke the Python building and publishing a training pipeline
-          export SUBSCRIPTION=$(SUBSCRIPTION_ID)
+          export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
