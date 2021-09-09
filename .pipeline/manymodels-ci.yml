@@ -79,11 +79,22 @@ stages:
         inlineScript: |
           set -e # fail on error
           # Invoke the Python building and publishing a training pipeline
+          # remove any services from AKS cluster and replace with new services
+          python -m ml_service.pipelines.forecasting.remove_services --subscription_id $(SUBSCRIPTION_ID) --resource_group $(RESOURCE_GROUP) 
+      displayName: 'remove existing services from AKS'
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: $(AMLCONNECTION)
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)
+        inlineScript: |
+          set -e # fail on error
+          # Invoke the Python building and publishing a training pipeline
           export SUBSCRIPTION=$(SUBSCRIPTION_ID)
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
           # remove any services from AKS cluster and replace with new services
-          python -m ml_service.pipelines.forecasting.remove_services
           jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/forecasting/realtime.ipynb
       displayName: 'Deploy models to AKS Service'
+
