@@ -3,10 +3,8 @@
 resources:
   containers:
   - container: mlops
-    endpoint: $(ACRCONNECTION)
+    endpoint: $(ACR_CONNECTION)
     image: 'automl/mlops/python:latest'
-
-    # image: mcr.microsoft.com/mlops/python:latest
 pr: none
 trigger:
   branches:
