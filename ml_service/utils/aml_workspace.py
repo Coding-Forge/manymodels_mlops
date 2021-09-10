@@ -5,9 +5,13 @@ import os
 e=Env()
 
 class Connect:
-    #def __init__(self):
+    
+    def __init__(self, subscription_id):
+        self._subscription_id = subscription_id
 
-    def authenticate(self, subcription_id) -> Workspace:
+    def authenticate(self) -> Workspace:
+        subscription_id = self._subscription_id
+        
         return Workspace.get(
             name=e.workspace_name,
             subscription_id=subscription_id,
