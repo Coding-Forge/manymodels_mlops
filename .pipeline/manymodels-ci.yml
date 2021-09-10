@@ -17,7 +17,7 @@ trigger:
     - .pipelines/
     - ml_service
     - ml_service/pipelines
-    - ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
+    - ml_service/pipelines/automl.ipynb
  
 variables:
 #- template: diabetes_regression-variables-template.yml
