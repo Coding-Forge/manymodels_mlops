@@ -14,6 +14,7 @@ class Env:
     # to load .env file into environment variables for local execution
     load_dotenv()
     workspace_name: Optional[str] = os.environ.get("WORKSPACE_NAME")
+    workspace_region: Optional[str] = os.environ.get("LOCATION")
     resource_group: Optional[str] = os.environ.get("RESOURCE_GROUP")
     subscription_id: Optional[str] = os.environ.get("SUBSCRIPTION_ID")
     tenant_id: Optional[str] = os.environ.get("TENANT_ID")
@@ -123,3 +124,12 @@ class Env:
     batchscore_copy_script_path: Optional[str] = os.environ.get(
         "BATCHSCORE_COPY_SCRIPT_PATH"
     )  # NOQA: E501
+
+    # get the AML Datastorage Structure
+    blob_datastore_name = os.environ.get("BLOB_DATASTORE_NAME")
+    container_name = os.environ.get("CONTAINER_NAME")
+    account_name =  os.environ.get("ACCOUNT_NAME")
+
+    # Other variables specific to each project
+    timestample_column = os.environ.get("TIMESTAMP_COLUMN")
+    split_date = os.environ.get("SPLIT_DATE")

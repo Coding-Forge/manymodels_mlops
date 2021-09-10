@@ -3,7 +3,7 @@
 resources:
   containers:
   - container: mlops
-    endpoint: 'azurecrconnection'
+    endpoint: $(ACRCONNECTION)
     image: 'automl/mlops/python:latest'
 
     # image: mcr.microsoft.com/mlops/python:latest
