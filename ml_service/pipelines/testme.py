@@ -23,4 +23,11 @@ for runs in experiments:
     run = runs.get_runs(tags={"BuildId": build_id})
     for item in run:
         print(item.id)
+        
+# %%
+
+import os
+
+print(os.environ.get("SUBSCRIPTION_ID"))
+print("did i get anything")
 # %%
