@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY Automated_ML/ci_dependencies.yml /setup/
+COPY ml_service/ci_dependencies.yml /setup/
 
 # activate environment
 ENV PATH /usr/local/envs/mlopspython_ci/bin:$PATH
