@@ -7,11 +7,11 @@ dependencies:
 
   - pip:
       # Base AzureML SDK
-      - azureml-sdk==1.33.*
+      - azureml-sdk==1.32.*
 
       # Must match AzureML SDK version.
       # https://docs.microsoft.com/en-us/azure/machine-learning/concept-environments
-      - azureml-defaults==1.33.*
+      - azureml-defaults==1.32.*
 
       # Training deps
       - scikit-learn
