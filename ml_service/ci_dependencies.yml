@@ -11,9 +11,9 @@ dependencies:
 
   - pip:
       # dependencies with versions aligned with conda_dependencies.yml.
-      - azureml-sdk==1.33.*
-      - azureml-train-automl==1.33.*
-      - azureml-contrib-automl-pipeline-steps==1.33.*
+      - azureml-sdk==1.32.*
+      - azureml-train-automl==1.32.*
+      - azureml-contrib-automl-pipeline-steps==1.32.*
       - pandas
       - scikit-learn
       - jupyter
