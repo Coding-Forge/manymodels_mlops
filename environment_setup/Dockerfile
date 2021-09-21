@@ -18,8 +18,8 @@ COPY ml_service/ci_dependencies.yml /setup/
 ENV PATH /usr/local/envs/mlopspython_ci/bin:$PATH
 
 RUN conda update -n base -c defaults conda && \
-    conda install python=3.7.5 && \
+    conda install python=3.7.11 && \
     conda env create -f /setup/ci_dependencies.yml && \
-    /bin/bash -c "source activate mlopspython_ci" && \
+    /bin/bash -c "source activate mlopspython_ci" && \ 
     az --version && \
     chmod -R 777 /usr/local/envs/mlopspython_ci/lib/python3.7
