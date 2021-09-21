@@ -4,6 +4,7 @@ LABEL org.label-schema.vendor = "Microsoft" \
     org.label-schema.vcs-url = "https://github.com/microsoft/MLOpsPython"
 
 RUN apt-get update && \
+    apt-get -qq install -y apt-utils  && \
     apt-get -qq install -y build-essential  && \
     apt-get -qq install manpages-dev && \
     apt-get -qq  install -y wget && \
