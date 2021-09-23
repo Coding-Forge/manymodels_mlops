@@ -1,0 +1,63 @@
+# Continuous Integration (CI) pipeline that orchestrates the training, evaluation, and registration of the diabetes_regression model.
+
+resources:
+  containers:
+  - container: mlops
+    endpoint: 'azurecrconnection'
+    image: 'automl/mlops/python:latest'
+
+    # image: mcr.microsoft.com/mlops/python:latest
+pr: none
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - .pipelines/
+    - ml_service
+    - ml_service/pipelines
+    - ml_service/pipelines/automl.ipynb
+ 
+variables:
+#- template: diabetes_regression-variables-template.yml
+- group: devopsforai-aml-vg
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: 'Model_CI'
+  displayName: 'Model CI'
+  jobs:
+  - job: "Model_CI_Pipeline"
+    displayName: "Model CI Pipeline"
+    container: mlops
+    timeoutInMinutes: 0
+    variables:
+      PASSWORD: $(Build.ArtifactStagingDirectory/drop)
+      #PASSWORD: $[dependencies.secret_getter.outputs['getpassword.PASSWORD'] ]
+    steps:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: '$(AMLCONNECTION)'
+        KeyVaultName: $(A_KV_NAME)
+        SecretsFilter: '*'
+        RunAsPreJob: false
+
+    #- template: code-quality-template.yml
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: $(AMLCONNECTION)
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)
+        inlineScript: |
+          set -e # fail on error
+          # Invoke the Python building and publishing a training pipeline
+          export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+          export WORKSPACE=$(WORKSPACE_NAME)
+          export RG=$(RESOURCE_GROUP)
+          export BUILDID=$(BUILD.BUILDID)
+          # jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
+          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
+      displayName: 'Publish Azure Machine Learning Pipeline'
