@@ -8,6 +8,7 @@ dependencies:
   - conda-forge::jq
   - pip==21.0.1
   - jupyter
+  - jupyter_core
 
   - pip:
       # dependencies with versions aligned with conda_dependencies.yml.
@@ -17,6 +18,7 @@ dependencies:
       - pandas==0.25.3
       - scikit-learn==0.22.2
       - python-dotenv==0.19.0
+      - ipykernel
 
       # Additional pip dependencies for the CI environment.
       - azure-cli
