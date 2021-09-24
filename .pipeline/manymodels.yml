@@ -58,8 +58,8 @@ stages:
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
-          pip freeze
-          jupyter nbconvert --to script ml_service/pipelines/training/automl.ipynb
-          python ml_service/pipelines/training/automl.py
-          # jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
+          # pip freeze
+          # jupyter nbconvert --to script ml_service/pipelines/training/automl.ipynb
+          # python ml_service/pipelines/training/automl.py
+          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
