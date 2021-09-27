@@ -22,4 +22,4 @@ RUN conda update -n base -c defaults conda && \
     conda env create -f /setup/ci_dependencies.yml && \
     /bin/bash -c "source activate mlopspython_ci" && \ 
     az --version && \
-    chmod -R /usr/local/envs/mlopspython_ci/lib/python3.7 777
+    chmod -R 777 /usr/local/envs/mlopspython_ci/lib/python3.7
