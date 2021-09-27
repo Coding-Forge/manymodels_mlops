@@ -30,6 +30,6 @@ steps:
       repository: '$(imageName)'
       tags: |
        ${{format('build-{0}', '$(Build.BuildNumber)')}}
-       latest
+       v1
       buildContext: '$(Build.SourcesDirectory)' 
       dockerFile: '$(Build.SourcesDirectory)/environment_setup/Dockerfile'
