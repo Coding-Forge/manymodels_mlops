@@ -51,7 +51,10 @@
 
 
 import sys
-sys.path.append("../../")
+import os
+print(os.getcwd())
+# sys.path.append("../../")
+print(os.getcwd())
 
 
 # In[5]:
@@ -61,8 +64,8 @@ import azureml.core
 from azureml.core import Workspace, Datastore
 import pandas as pd
 import os
-from utils.env_variables import Env
-from utils.aml_workspace import Connect
+from ml_service.utils.env_variables import Env
+from ml_service.utils.aml_workspace import Connect
 
 e=Env()
 
@@ -93,9 +96,6 @@ outputDf = pd.DataFrame(data = output, index = [''])
 
 
 # In[7]:
-
-
-get_ipython().system('pip freeze > ../../reqs.txt')
 
 
 # ### Choose an experiment
@@ -255,9 +255,6 @@ automl_settings = {
 # 
 
 # In[16]:
-
-
-get_ipython().system('pip install azureml.contrib.automl.pipeline.steps')
 
 
 # In[14]:
