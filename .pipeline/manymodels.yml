@@ -65,4 +65,5 @@ stages:
           # jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
           export name=$(whoami)
           echo $name
+          su root
       displayName: 'Publish Azure Machine Learning Pipeline'
