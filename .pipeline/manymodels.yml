@@ -61,6 +61,8 @@ stages:
           # pip freeze
           # jupyter nbconvert --to script ml_service/pipelines/training/automl.ipynb
           # python ml_service/pipelines/training/automl.py
-          chmod -R 777 /usr/local/envs/mlopspython_ci/lib/python3.7/site-packages/
-          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
+          # chmod -R 777 /usr/local/envs/mlopspython_ci/lib/python3.7/site-packages/
+          # jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
+          export name=$(whoami)
+          echo $name
       displayName: 'Publish Azure Machine Learning Pipeline'
