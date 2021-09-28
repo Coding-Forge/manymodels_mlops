@@ -4,7 +4,7 @@ resources:
   containers:
   - container: mlops
     endpoint: 'azurecrconnection'
-    image: 'automl/mlops/python:v1'
+    image: 'automl/mlops/python:latest'
 
     # image: mcr.microsoft.com/mlops/python:latest
 pr: none
