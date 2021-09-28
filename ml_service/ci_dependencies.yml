@@ -19,7 +19,7 @@ dependencies:
       - pandas==0.25.3
       - scikit-learn==0.22.2
       - python-dotenv==0.19.0
-      - ipykernel
+      - ipykernel==6.3.1
 
       # Additional pip dependencies for the CI environment.
       - azure-cli
