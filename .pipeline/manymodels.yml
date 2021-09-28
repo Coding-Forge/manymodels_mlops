@@ -58,5 +58,5 @@ stages:
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
-          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/short_automl.ipynb
+          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
