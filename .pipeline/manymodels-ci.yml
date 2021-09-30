@@ -58,7 +58,9 @@ stages:
           export WORKSPACE=$(WORKSPACE_NAME)
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
-          # jupyter nbconvert --to script ml_service/pipelines/02_AutoML_Training_Pipeline.ipynb
+          # this solved the issue with kernel timing out....moving it to the control plane
+          # pip install --upgrade prompt-toolkit
+          python3 -m ipykernel install --user
           jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/automl.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
 
