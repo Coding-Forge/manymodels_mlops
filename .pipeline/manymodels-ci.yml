@@ -97,6 +97,9 @@ stages:
           export RG=$(RESOURCE_GROUP)
           export BUILDID=$(BUILD.BUILDID)
           # remove any services from AKS cluster and replace with new services
+          # to resolve issue with kernel timing out
+          pip install --upgrade prompt-toolkit
+          python3 -m ipykernel install --user
           jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/forecasting/realtime.ipynb
       displayName: 'Deploy models to AKS Service'
 
