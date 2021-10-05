@@ -8,6 +8,7 @@ parameters:
   - Single-Project
   - Forecast
   - FB-Prophet
+  - Many-Models
 
 resources:
   containers:
