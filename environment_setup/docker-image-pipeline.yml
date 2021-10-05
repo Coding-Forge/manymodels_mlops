@@ -5,6 +5,7 @@ resources:
 pool: 
   vmImage: 'ubuntu-latest'
 
+pr: true
 trigger:
   branches:
     include:

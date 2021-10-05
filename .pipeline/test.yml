@@ -1,4 +1,13 @@
 # Continuous Integration (CI) pipeline that orchestrates the training, evaluation, and registration of the diabetes_regression model.
+parameters:
+- name: projectname
+  displayName: Project Name
+  type: string
+  default: Many-Models
+  values:
+  - Single-Project
+  - Forecast
+  - FB-Prophet
 
 resources:
   containers:
@@ -51,6 +60,7 @@ stages:
         workingDirectory: $(Build.SourcesDirectory)
         inlineScript: |
           set -e # fail on error
+          echo 'this is the parameter selected: ' ${{parameters.projectname}}
           # Invoke the Python building and publishing a training pipeline
           export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
           python -m test2
