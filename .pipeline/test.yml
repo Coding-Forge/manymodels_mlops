@@ -9,6 +9,9 @@ parameters:
   - Forecast
   - FB-Prophet
   - Many-Models
+- name: myStringName
+  type: string
+  default: a string value  
 
 resources:
   containers:
