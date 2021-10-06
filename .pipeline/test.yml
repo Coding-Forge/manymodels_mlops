@@ -65,9 +65,9 @@ stages:
         inlineScript: |
           set -e # fail on error
           echo 'this is the parameter selected: ' ${{parameters.projectname}}
+          echo 'did my value for the string come through' ${{parameters.myStringName}}
           # Invoke the Python building and publishing a training pipeline
           export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
           python -m test2
           python -m test3
-          jupyter nbconvert --to notebook --execute --inplace ml_service/pipelines/training/test.ipynb
       displayName: 'Publish Azure Machine Learning Pipeline'
