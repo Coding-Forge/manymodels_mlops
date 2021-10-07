@@ -12,8 +12,8 @@ from msrest.authentication import BasicAuthentication
 import pprint
 
 # Fill in with your personal access token and org URL
-personal_access_token = 'runj4dvh56yhbt2afhwzdeon6cjaav7qnockwlzivucjqhnf5zoa'
-organization_url = 'https://dev.azure.com/codingforge'
+personal_access_token = ''
+organization_url = ''
 
 # Create a connection to the org
 credentials = BasicAuthentication('', personal_access_token)
