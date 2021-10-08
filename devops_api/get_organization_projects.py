@@ -10,27 +10,26 @@ from azure.devops.v6_0.pipelines import PipelinesClient
 
 from msrest.authentication import BasicAuthentication
 import pprint
+import os
 
 # Fill in with your personal access token and org URL
+<<<<<<< HEAD:devops_api/get_organization_projects.py
+personal_access_token = os.getenv("PAT")
+organization_url = os.getenv("ORGANIZATION_URL")
+
+# %%
+=======
 personal_access_token = ''
 organization_url = ''
+>>>>>>> master:devops_api/pipeline_build.py
 
 # Create a connection to the org
 credentials = BasicAuthentication('', personal_access_token)
 connection = Connection(base_url=organization_url, creds=credentials)
-
-# Get a client (the "core" client provides access to projects, teams, etc)
 core_client = connection.clients.get_core_client()
-build_client = BuildClient(base_url=organization_url, creds=credentials)
-pipelines_client = PipelinesClient(base_url=organization_url, creds=credentials)
 
 # %%
-from azure.devops.v6_0.pipelines.models import CreatePipelineParameters
-
-pipeline_parameters = CreatePipelineParameters(folder="coding-forge",name="test")
-parameters = {"projectname":"Forecast","myStringName":"this is my string"}
-pipeline_parameters.from_dict(parameters)
-pipelines_client.run_pipeline(run_parameters=pipeline_parameters, project="ManyModelsOps", pipeline_id=9, pipeline_version=1)
+# Get a client (the "core" client provides access to projects, teams, etc)
 
 # %%
 
