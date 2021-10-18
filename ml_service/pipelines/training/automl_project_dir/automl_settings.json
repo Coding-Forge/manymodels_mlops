@@ -3,19 +3,19 @@
     "primary_metric": "normalized_root_mean_squared_error",
     "iteration_timeout_minutes": 10,
     "iterations": 15,
-    "experiment_timeout_hours": 1,
+    "experiment_timeout_hours": 0.25,
     "label_column_name": "Quantity",
     "n_cross_validations": 3,
     "time_column_name": "WeekStarting",
-    "max_horizon": 20,
-    "track_child_runs": false,
-    "partition_column_names": [
-        "Store",
-        "Brand"
-    ],
+    "drop_column_names": "Revenue",
+    "max_horizon": 6,
     "grain_column_names": [
         "Store",
         "Brand"
     ],
-    "pipeline_fetch_max_batch_size": 15
+    "track_child_runs": false,
+    "partition_column_names": [
+        "Store",
+        "Brand"
+    ]
 }
