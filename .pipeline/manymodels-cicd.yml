@@ -14,9 +14,6 @@ trigger:
     - master
   paths:
     include:
-    - .pipelines/
-    - ml_service
-    - ml_service/pipelines
     - ml_service/pipelines/automl.ipynb
  
 variables:
