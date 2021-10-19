@@ -1,4 +1,4 @@
-# %%
+ # %%
 
 from re import VERBOSE
 from azure.devops.connection import Connection
@@ -13,15 +13,10 @@ import pprint
 import os
 
 # Fill in with your personal access token and org URL
-<<<<<<< HEAD:devops_api/get_organization_projects.py
 personal_access_token = os.getenv("PAT")
 organization_url = os.getenv("ORGANIZATION_URL")
 
 # %%
-=======
-personal_access_token = ''
-organization_url = ''
->>>>>>> master:devops_api/pipeline_build.py
 
 # Create a connection to the org
 credentials = BasicAuthentication('', personal_access_token)
