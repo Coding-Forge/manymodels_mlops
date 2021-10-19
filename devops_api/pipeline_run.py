@@ -7,6 +7,12 @@ from azure.devops.v6_0.pipelines import PipelinesClient
 
 # %%
 
+#azure_devops_python_print_urls
+
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 from msrest.authentication import BasicAuthentication
 import pprint
 import os
@@ -29,7 +35,11 @@ pipelines_client = PipelinesClient(base_url=organization_url, creds=credentials)
 # %%
 from azure.devops.v6_0.pipelines.models import RunPipelineParameters
 
+logging.exception("changing parameters")
+
 #pipeline_parameters = CreatePipelineParameters(folder="coding-forge",name="test")
-parameters = {"projectname":"Forecast","myStringName":"this is my string"}
+parameters = {"projectname":"FB-Prophet","myStringName":"Did this really work or did this not work"}
 pipeline_parameters = RunPipelineParameters(template_parameters=parameters)
 pipelines_client.run_pipeline(run_parameters=pipeline_parameters, project="ManyModelsOps", pipeline_id=9)
+
+# %%

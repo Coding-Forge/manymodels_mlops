@@ -27,12 +27,6 @@ class Util:
             raise argparse.ArgumentTypeError('Boolean value expected.')
 
 
-parser = argparse.ArgumentParser("split")
-parser.add_argument("--node_count", default=1, type=int, help="number of nodes")
-parser.add_argument("--process_count_per_node", default=1, type=int, help="number of processes per node")
-parser.add_argument("--retrain_failed_models", default=False, type=Util.str2bool, help="retrain failed models only")
-
-args, _ = parser.parse_known_args()
 many_models_train = None
 
 # Whether or not this driver has been initialized
@@ -46,6 +40,14 @@ def _get_automl_settings():
 
 def _initialize_driver():
     print("Initializing driver")
+
+    parser = argparse.ArgumentParser("split")
+    parser.add_argument("--node_count", default=1, type=int, help="number of nodes")
+    parser.add_argument("--process_count_per_node", default=1, type=int, help="number of processes per node")
+    parser.add_argument(
+        "--retrain_failed_models", default=False, type=Util.str2bool, help="retrain failed models only")
+
+    args, _ = parser.parse_known_args()
 
     # Sleep this worker node for a random amount of time. This helps stagger new traffic over a
     # longer period of time so that service pods have time to auto-scale up.
