@@ -3,13 +3,28 @@ There are two commonly accepted means for running and creating conda environment
 <ol>
 <li>Install the whole suite from Anaconda</li>
 <ul>
-<li>IDE [Spyder, VS Code, Jupyter]</li>
+<li>IDE</li>
+<ul>
+    <li>VS Code</li>
+    <li>Spyder</li>
+    <li>Jupyter</li>
+    <li>RStudio</li>
+</ul>
 <li>Package Manager</li>
+<li>Languages</li>
+<ul>
+<li>Julia</li>
+<li>Python</li>
+<li>R</li>
+</ul>
 </ul>
 <li>Install the package management from miniconda</li>
 </ol>
 
 ## Setting up Conda
+
+You can find the installation packages for [Anaconda](https://www.anaconda.com/products/individual)
+
 You can find the installation packages for [miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
 ### Setting up on Ubuntu
