@@ -27,7 +27,7 @@ You can find the installation packages for [Anaconda](https://www.anaconda.com/p
 
 You can find the installation packages for [miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-### Setting up on Ubuntu
+### Setting up miniconda on Ubuntu
 
 From you terminal enter the following commands
 ```
