@@ -56,8 +56,8 @@ Using virtual environments is the best way to manage development of any python s
 |Create a new environment ENV_NAME with Python version 3.X|	conda create --name ENV_NAME python=3.X|
 |Create a new environment ENV_NAME with some initial packages|	conda create --name ENV_NAME python=3.X pandas ipykernel|
 |Create a new environment from a yaml file|	conda env create --file environment.yaml|
-|Activate the environment ENV_NAME (OSX, Linux)|	source activate ENV_NAME|
-|Activate the environment ENV_NAME (Windows)|	activate ENV_NAME|
+|Activate the environment ENV_NAME (OSX, Linux)|	conda activate ENV_NAME|
+|Activate the environment ENV_NAME (Windows)|	source activate ENV_NAME|
 |Deactivate the current environment (*)	|source deactivate|
 |Delete the environment ENV_NAME	|conda env remove --name ENV_NAME|
 |List all installed environments	|conda env list|
