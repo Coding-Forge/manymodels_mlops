@@ -1,7 +1,13 @@
 # Conda
 There are two commonly accepted means for running and creating conda environments.
-1. Install the whole suite from Anaconda
-2. Install the package management from miniconda
+<ol>
+<li>Install the whole suite from Anaconda</li>
+<ul>
+<li>IDE [Spyder, VS Code, Jupyter]</li>
+<li>Package Manager</li>
+</ul>
+<li>Install the package management from miniconda</li>
+</ol>
 
 ## Setting up Conda
 You can find the installation packages for [miniconda](https://docs.conda.io/en/latest/miniconda.html)
