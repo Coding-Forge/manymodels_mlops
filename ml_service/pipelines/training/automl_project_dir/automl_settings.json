@@ -4,18 +4,17 @@
     "iteration_timeout_minutes": 10,
     "iterations": 15,
     "experiment_timeout_hours": 0.25,
-    "label_column_name": "Quantity",
+    "label_column_name": "HNRSold",
     "n_cross_validations": 3,
-    "time_column_name": "WeekStarting",
-    "drop_column_names": "Revenue",
+    "time_column_name": "Date_Time",
     "max_horizon": 6,
     "grain_column_names": [
-        "Store",
-        "Brand"
+        "LocationNumber",
+        "item_id"
     ],
     "track_child_runs": false,
     "partition_column_names": [
-        "Store",
-        "Brand"
+        "LocationNumber",
+        "item_id"
     ]
 }
