@@ -111,6 +111,10 @@ env.bak/
 venv.bak/
 .azureml/
 
+# Data
+*.csv
+*.parquet
+
 # Spyder project settings
 .spyderproject
 .spyproject

@@ -15,8 +15,11 @@ def split_data(data_path, time_column_name, split_date):
     files_list = [os.path.join(path, f) for path, _, files in os.walk(data_path) for f in files
                   if path not in (train_data_path, inference_data_path)]
 
+    print(f"the length of file_list is {len(files_list)}")
+
     for file in files_list:
         file_name = os.path.basename(file)
+        print(file_name)
         file_extension = os.path.splitext(file_name)[1].lower()
         df = read_file(file, file_extension)
 

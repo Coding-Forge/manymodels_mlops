@@ -131,5 +131,9 @@ class Env:
     account_name =  os.environ.get("ACCOUNT_NAME")
 
     # Other variables specific to each project
-    timestample_column = os.environ.get("TIMESTAMP_COLUMN")
+    timestamp_column = os.environ.get("TIMESTAMP_COLUMN")
     split_date = os.environ.get("SPLIT_DATE")
+
+    primary_partition = os.environ.get("PRIMARY_PARTITION")
+    secondary_partition = os.environ.get("SECONDARY_PARTITION")
+    label_column_name = os.environ.get("LABEL_COLUMN_NAME")
