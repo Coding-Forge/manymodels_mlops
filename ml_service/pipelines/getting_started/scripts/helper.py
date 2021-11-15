@@ -3,35 +3,7 @@
 
 import os
 import pandas as pd
-import shutil
 
-
-def recurse_path(target_path, root=""):
-        """"
-        This function recursively prints all contents of a pathlib.Path object
-        """
-        #print_indented(target_path.name, level)
-        for file in target_path.iterdir():
-            if file.is_dir():
-                recurse_path(file, file)
-            else:
-                if "azureml" in str(root):
-                    continue
-                if str(file.name).endswith(".csv"):
-                    shutil.copyfile(root / file.name, os.path.join(os.getcwd(), "oj_sales_data",file.name))
-
-def walk_path(directory):
-    for root, dirs, files in os.walk(directory):
-        path = root.split(os.sep)
-        print(path)
-
-        for dir in dirs:
-            print(f"what is the directory {dir}")
-
-        print((len(path) - 1) * '-b-', os.path.basename(root))
-        for file in files:
-            print(file)
-            print(len(path) * '---', file)
 
 def split_data(data_path, time_column_name, split_date):
 
