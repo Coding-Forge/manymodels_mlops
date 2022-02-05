@@ -47,6 +47,8 @@ def run(rawdata):
         # Append data to service minibatch
         services_tocall[model_service].append(raw_data[index])
 
+    import json
+
     # Call endpoints and store result
     result = []
     for service, minibatch in services_tocall.items():
@@ -55,9 +57,20 @@ def run(rawdata):
             response.raise_for_status()
         except HTTPError:
             return AMLResponse(response.text, response.status_code)
-        result += response.json()
+        #result += response.json()
+        result.append(response.json())
 
-    return result
+    return manipulate_response(result)
+
+def manipulate_response(result):
+    df = pd.read_json(result[0][0])
+    forecast = df['Predictions'].to_list()
+    index = df[['DateTime','item_id']]
+    index['DateTime']=index['DateTime'].astype(str)
+    index_values = index.transpose().to_dict().values()
+    response = "{forecast:" + str(forecast) + ", index:" + str(list(index_values)).replace("item_id","itemId")  + "}"
+    
+    return response
 
 
 def call_model_webservice(service_endpoint, data, service_key=None):

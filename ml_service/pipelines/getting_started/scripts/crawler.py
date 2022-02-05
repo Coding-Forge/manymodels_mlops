@@ -1,5 +1,6 @@
 import os
 import shutil
+from pathlib import Path
 
 
 class Recurse:
@@ -28,7 +29,9 @@ class Recurse:
                     if "azureml" in str(root):
                         continue
                     if str(file.name).endswith(self.get_file_type()):
-                        shutil.copyfile(root / file.name, os.path.join(os.getcwd(), self.get_destination(),file.name))
+                        destination = os.path.join(os.getcwd(), self.get_destination(), file.name)
+                        source=os.path.join(target_path.absolute(),file.name)
+                        shutil.copyfile(source, destination)
 
     def walk_path(directory):
         for root, dirs, files in os.walk(directory):
